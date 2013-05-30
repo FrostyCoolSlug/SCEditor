@@ -2108,16 +2108,16 @@
 
 				// handle [img width=340 height=240]url[/img]
 				if(typeof attrs.width !== "undefined")
-					attribs += ' width: ' + attrs.width;
+					attribs += ' width: ' + attrs.width + 'px; ';
 				if(typeof attrs.height !== "undefined")
-					attribs += ' height: ' + attrs.height;
+					attribs += ' height: ' + attrs.height + 'px; ';
 
 				// handle [img=340x240]url[/img]
 				if(attrs.defaultattr) {
 					parts = attrs.defaultattr.split(/x/i);
 
-					attribs = ' width: ' + parts[0] +
-						' height: ' + (parts.length === 2 ? parts[1] : parts[0]);
+					attribs = ' width: ' + parts[0] + 'px; ' +
+						' height: ' + (parts.length === 2 ? parts[1] : parts[0]) + 'px; ';
 				}
 
 				return '<img style="' + attribs + '" src="' + content + '" />';

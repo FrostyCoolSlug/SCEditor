@@ -3216,12 +3216,12 @@
 						attrs  = '';
 
 					if(width)
-						attrs += ' width="' + width + '"';
+						attrs += ' width: ' + width + 'px;';
 					if(height)
-						attrs += ' height="' + height + '"';
+						attrs += ' height: ' + height + 'px;';
 
 					if(val && val !== "http://")
-						editor.wysiwygEditorInsertHtml('<img' + attrs + ' src="' + val + '" />');
+						editor.wysiwygEditorInsertHtml('<img style="' + attrs + '" src="' + val + '" />');
 
 					editor.closeDropDown(true);
 					e.preventDefault();
