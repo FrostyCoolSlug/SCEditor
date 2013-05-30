@@ -1876,7 +1876,7 @@
 				return '[font=' + this.stripQuotes(font) + ']' + content + '[/font]';
 			},
 			html: function(token, attrs, content) {
-				return '<font face="' + attrs.defaultattr + '">' + content + '</font>';
+				return '<span style="font-family: ' + attrs.defaultattr + '">' + content + '</span>';
 			}
 		},
 		// END_COMMAND
@@ -1922,7 +1922,8 @@
 				return '[size=' + size + ']' + content + '[/size]';
 			},
 			html: function(token, attrs, content) {
-				return '<font size="' + attrs.defaultattr + '">' + content + '</font>';
+				var sizes = Array("x-small", "small", "medium", "large", "x-large", "xx-large", "46px");
+				return '<span style="font-size: ' + sizes[attrs.defaultattr - 1] + '">'+content+'</span>';
 			}
 		},
 		// END_COMMAND
@@ -1948,7 +1949,7 @@
 				return '[color=' + $.sceditor.plugins.bbcode.normaliseColour(color) + ']' + content + '[/color]';
 			},
 			html: function(token, attrs, content) {
-				return '<font color="' + attrs.defaultattr + '">' + content + '</font>';
+				return '<span style="color: ' + attrs.defaultattr + '">' + content + '</span>';
 			}
 		},
 		// END_COMMAND
@@ -2101,19 +2102,19 @@
 
 				// handle [img width=340 height=240]url[/img]
 				if(typeof attrs.width !== "undefined")
-					attribs += ' width="' + attrs.width + '"';
+					attribs += ' width: ' + attrs.width;
 				if(typeof attrs.height !== "undefined")
-					attribs += ' height="' + attrs.height + '"';
+					attribs += ' height: ' + attrs.height;
 
 				// handle [img=340x240]url[/img]
 				if(attrs.defaultattr) {
 					parts = attrs.defaultattr.split(/x/i);
 
-					attribs = ' width="' + parts[0] + '"' +
-						' height="' + (parts.length === 2 ? parts[1] : parts[0]) + '"';
+					attribs = ' width: ' + parts[0] +
+						' height: ' + (parts.length === 2 ? parts[1] : parts[0]);
 				}
 
-				return '<img' + attribs + ' src="' + content + '" />';
+				return '<img style="' + attribs + '" src="' + content + '" />';
 			}
 		},
 		// END_COMMAND
@@ -2214,7 +2215,7 @@
 			},
 			isInline: false,
 			format: "[left]{0}[/left]",
-			html: '<div align="left">{0}</div>'
+			html: '<div style="text-align: left">{0}</div>'
 		},
 		// END_COMMAND
 
@@ -2225,7 +2226,7 @@
 			},
 			isInline: false,
 			format: "[center]{0}[/center]",
-			html: '<div align="center">{0}</div>'
+			html: '<div style="text-align: center">{0}</div>'
 		},
 		// END_COMMAND
 
@@ -2236,7 +2237,7 @@
 			},
 			isInline: false,
 			format: "[right]{0}[/right]",
-			html: '<div align="right">{0}</div>'
+			html: '<div style="text-align: right">{0}</div>'
 		},
 		// END_COMMAND
 
@@ -2247,7 +2248,7 @@
 			},
 			isInline: false,
 			format: "[justify]{0}[/justify]",
-			html: '<div align="justify">{0}</div>'
+			html: '<div style="text-align: justify">{0}</div>'
 		},
 		// END_COMMAND
 

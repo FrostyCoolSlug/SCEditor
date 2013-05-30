@@ -45,9 +45,9 @@
 
 		emoticon:	'<img src="{url}" data-sceditor-emoticon="{key}" alt="{key}" title="{tooltip}" />',
 
-		fontOpt:	'<a class="sceditor-font-option" href="#" data-font="{font}"><font face="{font}">{font}</font></a>',
+		fontOpt:	'<a class="sceditor-font-option" href="#" data-font="{font}"><span style="font-family: {font}">{font}</span></a>',
 
-		sizeOpt:	'<a class="sceditor-fontsize-option" data-size="{size}" href="#"><font size="{size}">{size}</font></a>',
+		sizeOpt:	'<a class="sceditor-fontsize-option" data-size="{sizeText}" href="#"><span style="font-size: {size}">{sizeText}</font></a>',
 
 		pastetext:	'<div><label for="txt">{label}</label> ' +
 				'<textarea cols="20" rows="7" id="txt"></textarea></div>' +
@@ -2978,8 +2978,9 @@
 						e.preventDefault();
 					};
 
+				var sizes = Array("x-small", "small", "medium", "large", "x-large", "xx-large", "46px");
 				for (var i=1; i<= 7; i++)
-					content.append(_tmpl('sizeOpt', {size: i}, true).click(clickFunc));
+					content.append(_tmpl('sizeOpt', {size: sizes[i - 1], sizeText: i}, true).click(clickFunc));
 
 				editor.createDropDown(caller, "fontsize-picker", content);
 			},
