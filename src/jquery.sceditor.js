@@ -2978,7 +2978,7 @@
 						e.preventDefault();
 					};
 
-				var sizes = Array("x-small", "small", "medium", "large", "x-large", "xx-large", "46px");
+				var sizes = Array("x-small", "small", "medium", "large", "x-large", "xx-large", "48px");
 				for (var i=1; i<= 7; i++)
 					content.append(_tmpl('sizeOpt', {size: sizes[i - 1], sizeText: i}, true).click(clickFunc));
 

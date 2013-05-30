@@ -1922,7 +1922,7 @@
 				return '[size=' + size + ']' + content + '[/size]';
 			},
 			html: function(token, attrs, content) {
-				var sizes = Array("x-small", "small", "medium", "large", "x-large", "xx-large", "46px");
+				var sizes = Array("x-small", "small", "medium", "large", "x-large", "xx-large", "48px");
 				return '<span style="font-size: ' + sizes[attrs.defaultattr - 1] + '">'+content+'</span>';
 			}
 		},
