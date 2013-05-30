@@ -1969,7 +1969,13 @@
 			breakStart: true,
 			isInline: false,
 			skipLastLineBreak: true,
-			html: '<ul>{0}</ul>'
+			html: function(token, attrs, content) {
+				if (typeof attrs.defaultattr !== "undefined") {
+					// If there's a param, they want an ordered list..
+					return "<ol>" + content + "</ol>";
+				}
+				return "<ul>" + content + "</ul>"
+			}
 		},
 		ol: {
 			tags: {
